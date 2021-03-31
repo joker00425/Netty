@@ -16,7 +16,7 @@ public class EchoServer {
     private  int port;
 
     public EchoServer(int port){
-
+        this.port = port;
     }
     public static void main(String[] args) throws Exception {
 
@@ -36,7 +36,7 @@ public class EchoServer {
                         }
                     });
 
-            ChannelFuture f = b.bind().sync();
+            ChannelFuture f = b.bind(port).sync();
             System.out.println(EchoServer.class.getName() + " started and listen on" + f.channel().localAddress());
             f.channel().closeFuture().sync();
         }catch (Exception e){
